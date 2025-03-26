@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啟動中...</title>
+</head>
+<body>
+  <p>啟動中，請稍候...</p>
+  <script>
+    fetch('https://github.com/Lizase/pwa-domain/blob/main/domain.json')
+      .then(res => res.json())
+      .then(cfg => {
+        window.location.replace(cfg.domain);
+      })
+      .catch(() => {
+        document.body.innerHTML = '<p>連線失敗，請手動前往 iqqapp.com</p>';
+      });
+  </script>
+</body>
+</html>
+
