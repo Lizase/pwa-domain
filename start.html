@@ -11,7 +11,7 @@
     fetch('https://lizase.github.io/pwa-domain/domain.json')
       .then(res => res.json())
       .then(cfg => {
-        //window.location.replace(cfg.domain);
+        window.location.replace(cfg.domain);
       })
       .catch(() => {
         document.body.innerHTML = '<p>連線失敗，請手動前往 iqqapp.com</p>';
