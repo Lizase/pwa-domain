@@ -22,6 +22,10 @@
   <div id="buttons">讀取中...</div>
 
   <script>
+    // 取得網址中的 fromsite 參數
+    const params = new URLSearchParams(window.location.search);
+    const fromsite = params.get('fromsite');
+
     fetch('https://lizase.github.io/pwa-domain/domain.json')
       .then(res => res.json())
       .then(data => {
@@ -31,9 +35,19 @@
         Object.entries(data).forEach(([name, url]) => {
           const btn = document.createElement('button');
           btn.textContent = name;
+
           btn.onclick = () => {
-            window.location.href = url;
+            let finalUrl = url;
+
+            if (fromsite) {
+              finalUrl += url.includes('?')
+                ? `&fromsite=${encodeURIComponent(fromsite)}`
+                : `?fromsite=${encodeURIComponent(fromsite)}`;
+            }
+
+            window.location.href = finalUrl;
           };
+
           container.appendChild(btn);
         });
       })
