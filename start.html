@@ -3,20 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>啟動中...</title>
+  <title>選擇入口</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    button {
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
-  <p>啟動中，請稍候...</p>
+  <h1>請選擇入口</h1>
+  <div id="buttons">讀取中...</div>
+
   <script>
     fetch('https://lizase.github.io/pwa-domain/domain.json')
       .then(res => res.json())
-      .then(cfg => {
-        window.location.replace(cfg.domain);
+      .then(data => {
+        const container = document.getElementById('buttons');
+        container.innerHTML = ''; // 清空原本的內容
+
+        Object.entries(data).forEach(([name, url]) => {
+          const btn = document.createElement('button');
+          btn.textContent = name;
+          btn.onclick = () => {
+            window.location.href = url;
+          };
+          container.appendChild(btn);
+        });
       })
       .catch(() => {
-        document.body.innerHTML = '<p>連線失敗，請手動前往 iqqapp.com</p>';
+        document.getElementById('buttons').innerHTML = '<p>連線失敗，請稍後再試</p>';
       });
   </script>
 </body>
 </html>
-   
+
