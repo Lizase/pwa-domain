@@ -1,0 +1,2 @@
+.tabs{display:flex;gap:24px}.tab{cursor:pointer;padding:3px 5px;position:relative}.tab:after{background-color:red;bottom:0;content:"";display:block;height:3px;left:12.5%;position:absolute;transform:scaleX(0);transition:transform .3s ease;width:80%}.tab.active:after{transform:scaleX(1)}
+/*# sourceMappingURL=3042.8a7a9dfe.chunk.css.map*/
