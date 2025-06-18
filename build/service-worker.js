@@ -1,4 +1,4 @@
-const CACHE_NAME = `offline-1.1.29`;
+const CACHE_NAME = `offline-1.1.38`;
 const OFFLINE_URL = "offline.html";
 
 // 安裝階段
